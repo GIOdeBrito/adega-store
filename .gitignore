@@ -1,0 +1,10 @@
+
+# Base app dir
+dist/
+
+# Node modules
+node_modules/
+
+# Services app dirs
+services/test-service/dist
+

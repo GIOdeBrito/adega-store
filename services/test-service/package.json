@@ -1,0 +1,13 @@
+{
+  "name": "test-service",
+  "version": "1.0.0",
+  "description": "",
+  "main": "test.service.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/test.service.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
