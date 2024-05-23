@@ -1,0 +1,34 @@
+version: '3'
+
+services:
+    app:
+        image: main-store-app:latest
+        container_name: store-express
+        build:
+            context: .
+            dockerfile: Dockerfile
+        ports:
+            - "3000:3000"
+        command: npm start
+        networks:
+            - store
+        tty: true
+
+    test-service:
+        image: store-api-test:latest
+        container_name: store-express-api-test
+        build:
+            context: ./services/test-service/
+            dockerfile: Dockerfile
+        ports:
+            - "3001:3001"
+        command: npm start
+        networks:
+            - store
+        tty: true
+
+networks:
+    store:
+        name: storexpress-net
+        external: true
+
