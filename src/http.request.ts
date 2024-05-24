@@ -1,52 +1,31 @@
 
-import https from "https";
+/*
+	@Author: Giordano de Brito
+	@Description: Here lies some basic Web request functions.
+	Since I do not have a SSL certificate, I had to stick to HTTP.
+*/
 
-export function httpGet (url: string): Promise<any>
+import http from "http";
+
+function httpGet (options: Object): Promise<any>
 {
-	/*return new Promise((resolve, reject) =>
-    {
-        https.get(url, res =>
-        {
-            let data: Buffer[] = [];
-
-            res.on('data', chunk =>
-            {
-                data.push(chunk);
-            });
-
-            res.on('end', () =>
-            {
-                resolve(Buffer.concat(data).toString());
-            });
-
-			res.on('error', err =>
-			{
-				reject(err.message)
-			});
-        })
-        .on('error', (err) =>
-        {
-            reject(err.message);
-        });
-    });*/
-
 	return new Promise((resolve, reject) =>
     {
-		let result: string = '';
+		let result: string[] = [];
 
-		const req = https.request(url, (res) =>
+		const req = http.request(options, (res) =>
 		{
 		    console.log(res.statusCode);
 
-		    res.setEncoding('utf8');
+		    //res.setEncoding('utf8');
 		    res.on('data', (chunk) =>
 			{
-		        result += chunk;
+		        result.push(chunk);
 		    });
 
 		    res.on('end', () =>
 			{
-		        resolve(result);
+		        resolve(result.join(''));
 		    });
 		});
 
@@ -59,8 +38,13 @@ export function httpGet (url: string): Promise<any>
 	});
 }
 
-export function httpPost (): string
+function httpPost (): void
 {
-	return "tome";
+
+}
+
+export {
+	httpGet,
+	httpPost
 }
 

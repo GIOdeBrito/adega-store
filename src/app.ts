@@ -12,7 +12,14 @@ app.use(express.static(path.join(__dirname, '../public')));
 
 app.get('/raw', async function(req: Request, res: Response)
 {
-    let respRaw = await httpGet("http://store-express-api-test:3001/api/v1/test");
+	let options: Object = {
+		hostname: 'store-express-api-test',
+		port: 3001,
+		path: '/api/v1/test',
+		method: 'GET'
+	};
+
+	let respRaw = await httpGet(options);
 	//let respRaw = httpPost();
     res.send(respRaw);
 });
