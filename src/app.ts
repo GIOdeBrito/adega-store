@@ -1,28 +1,26 @@
 
-import express, { Express, Request, Response } from "express";
+/*
+@Author: Giordano de Brito
+@Description: The main store-express application source.
+*/
+
+import express, { Express, Response, Request } from "express";
 import path from "path";
-import { httpGet, httpPost } from './http.request';
 
 const app: Express = express();
 
-const PORT: number = 3000;
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, '../views'));
 
-// Serves static files
 app.use(express.static(path.join(__dirname, '../public')));
 
-app.get('/raw', async function(req: Request, res: Response)
-{
-	let options: Object = {
-		hostname: 'store-express-api-test',
-		port: 3001,
-		path: '/api/v1/test',
-		method: 'GET'
-	};
+import viewsRouter from "./views.pages";
+import staticRouter from "./static.pages";
 
-	let respRaw = await httpGet(options);
-	//let respRaw = httpPost();
-    res.send(respRaw);
-});
+app.use(viewsRouter);
+app.use(staticRouter);
 
-app.listen(PORT, () => `App running on port ${PORT}`);
+const PORT: number = 3000;
+
+app.listen(PORT, () => console.log(`App running on port ${PORT}`));
 

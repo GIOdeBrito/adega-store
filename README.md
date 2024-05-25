@@ -1,10 +1,10 @@
-## Online Store Express
+# Online Store Express
 
-# Requirements
+## Requirements
 
 Docker and Docker Compose
 
-# Setting Up
+## Setting Up
 
 Init a npm repository
 npm init -y
@@ -55,4 +55,15 @@ After that, run the docker compose instruction.
 
 ```bash
 sudo docker-compose -d
+```
+
+## Logs
+
+Sometimes the application might break or an unexplainable mysterious behaviour
+comes to pass, but fortunately docker logging can be of immense help.
+
+It is important to check the logs in case something peculiar happens.
+
+```bash
+sudo docker logs store-express
 ```
