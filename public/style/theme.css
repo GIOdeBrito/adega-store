@@ -1,4 +1,7 @@
 
+@import "./navbar.css";
+@import "./side-notification.css";
+
 :root {
 
 }
@@ -6,3 +9,5 @@
 html, body {
     margin: 0;
 }
+
+

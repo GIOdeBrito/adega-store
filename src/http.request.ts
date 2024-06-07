@@ -40,7 +40,7 @@ function httpGet (options: Object): Promise<any>
 
 function httpPost (): void
 {
-
+	// No post logic for now :P
 }
 
 export {

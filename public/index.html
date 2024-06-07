@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Store Express</title>
-        <link rel="stylesheet" href="/style/theme.css">
+        <link rel="stylesheet" href="/public/style/theme.css">
     </head>
 
     <body>
@@ -13,7 +13,28 @@
         </article>
 
         <article>
-
+			<button type="button" name="button">Show Information</button>
         </article>
     </body>
+
+	<script type='module'>
+
+	import SideNotification from '/public/script/side-notification.js';
+
+	window.addEventListener('load', function ()
+	{
+		setControls();
+	});
+
+	function setControls ()
+	{
+		let button = document.querySelector('button');
+
+		button.onclick = () =>
+		{
+			SideNotification.Information('This is a default text.');
+		};
+	}
+
+	</script>
 </html>

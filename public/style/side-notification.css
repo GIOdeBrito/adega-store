@@ -1,0 +1,28 @@
+
+
+.s-notification {
+	width: 26rem;
+	height: 70px;
+	display: flex;
+	background-color: #f9f9f9;
+	box-shadow: 0 0 7px #00000052;
+	position: fixed;
+	top: 4vh;
+	z-index: 10;
+	right: 0;
+	transform: translateX(100%);
+	transition: top .25s ease-in-out, transform .4s ease-in-out;
+	overflow: hidden;
+}
+
+.s-notification > img {
+	padding: 1rem .7rem;
+}
+
+.s-notification > p {
+	margin: auto 0;
+}
+
+.s-notification-reveal {
+	transform: translateX(0%);
+}

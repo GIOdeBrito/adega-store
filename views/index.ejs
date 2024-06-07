@@ -3,17 +3,20 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title><%= model.title %></title>
-        <link rel="stylesheet" href="/style/theme.css">
+        <title>Home - Store Express</title>
+        <link rel="stylesheet" href="/public/style/theme.css">
+		<link rel="icon" type="image/x-icon" href="/public/favicon.ico">
     </head>
 
     <body>
+		<%- include('nav-component') %>
+
         <article>
-            <h1><%= model.response %></h1>
+            <h1>Store Express</h1>
         </article>
 
         <article>
-			<h1>Article base</h1>
+
         </article>
     </body>
 </html>

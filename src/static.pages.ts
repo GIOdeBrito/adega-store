@@ -11,7 +11,7 @@ const router = Router();
 
 router.get('/raw2', async function(req: Request, res: Response): Promise<void>
 {
-	let options: Object =
+	const options: Object =
 	{
 		hostname: 'store-express-api-test',
 		port: 3001,

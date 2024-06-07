@@ -2,21 +2,9 @@
 
 ## Requirements
 
-Docker and Docker Compose
-
-## Setting Up
-
-Init a npm repository
-npm init -y
-
-Install TypeScript
-npm install typescript --save-dev
-
-Init TypeScript configuration file
-npx tsc --init
-
-Install Express and their types
-npm install --save-dev @types/express
+- A Linux Machine (Preferably)
+- Docker
+- Docker Compose
 
 ## Virtual Network
 
@@ -29,18 +17,18 @@ List the current docker networks.
 docker network ls
 ```
 
-It is prudente to manually create a network for the Application and services only.
+It is prudent to manually create a network for the Application and services only.
 And then Docker Compose will attach our containers to them automatically.
 
 ```bash
-docker network create storexpress-net
+docker network create store-express-net
 ```
 
-After the proper building of it, one can inspect the network and see what
-lies inside.
+After the proper building of it, one can inspect the network activity and
+also see what lies inside.
 
 ```bash
-docker network inspect storexpress-net
+docker network inspect store-express-net
 ```
 
 ## Running the Application
@@ -67,3 +55,16 @@ It is important to check the logs in case something peculiar happens.
 ```bash
 sudo docker logs store-express
 ```
+
+## Cleaning Up
+
+Sometimes it is necessary to clean up unused docker images that might be lying
+around and occupying unnecessary space in the system.
+
+There is an option just for that within the command line.
+
+```bash
+sudo docker image prune
+```
+
+
