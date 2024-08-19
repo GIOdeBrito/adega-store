@@ -7,18 +7,18 @@ Since I do not have a SSL certificate, I had to stick to HTTP.
 
 import http from "http";
 
-function httpGet (options: Object): Promise<any>
+function httpGet (options: Object): Promise<string>
 {
 	return new Promise((resolve, reject) =>
 	{
 		let result: string[] = [];
 
-		const req: any = http.request(options, (res) =>
+		const req: http.ClientRequest = http.request(options, (res: http.IncomingMessage) =>
 		{
 			//console.log(res.statusCode);
 
-			//res.setEncoding('utf8');
-			res.on('data', (chunk: any) =>
+			res.setEncoding('utf8');
+			res.on('data', (chunk: string) =>
 			{
 				result.push(chunk);
 			});

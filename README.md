@@ -1,35 +1,10 @@
-# Online Store Express
+# Adega Wine Store
 
 ## Requirements
 
 - A Linux Machine (Preferably)
 - Docker
 - Docker Compose
-
-## Virtual Network
-
-To make two or more containers intercommunicate it is necessary
-for them to be able to find one another within a network.
-
-List the current docker networks.
-
-```bash
-docker network ls
-```
-
-It is prudent to manually create a network for the Application and services only.
-And then Docker Compose will attach our containers to them automatically.
-
-```bash
-docker network create store-express-net
-```
-
-After the proper building of it, one can inspect the network activity and
-also see what lies inside.
-
-```bash
-docker network inspect store-express-net
-```
 
 ## Running the Application
 

@@ -4,7 +4,7 @@
     "typescript": "^5.4.5",
 	"ejs": "^3.1.8"
   },
-  "name": "online-store",
+  "name": "adega-store",
   "version": "1.0.0",
   "main": "src/app.ts",
   "scripts": {

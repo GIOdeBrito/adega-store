@@ -1,9 +1,9 @@
-version: '3'
+version: '3.5'
 
 services:
     app:
-        image: main-store-app:latest
-        container_name: store-express
+        image: main-adega-app:latest
+        container_name: adega-wine-container
         build:
             context: .
             dockerfile: Dockerfile
@@ -11,12 +11,12 @@ services:
             - "3000:3000"
         command: npm start
         networks:
-            - store
+            - adega-net
         tty: true
 
     test-service:
-        image: store-api-test:latest
-        container_name: store-express-api-test
+        image: adega-api-test:latest
+        container_name: adega-api-test
         build:
             context: ./services/test-service/
             dockerfile: Dockerfile
@@ -24,11 +24,11 @@ services:
             - "3001:3001"
         command: npm start
         networks:
-            - store
+            - adega-net
         tty: true
 
 networks:
-    store:
-        name: storexpress-net
-        external: true
+    adega-net:
+        name: adega-network
+        external: false
 
