@@ -1,0 +1,45 @@
+
+<%#
+Login form for the website
+#%>
+
+<!DOCTYPE html>
+
+<article class="login-form-wrapper">
+	<form>
+		<header>
+			<h1>Login</h1>
+		</header>
+
+		<input class='form-input' type="text" name='user' placeholder="Username" required>
+		<input class='form-input' type="password" name='pwd' placeholder="Password" required>
+
+		<button name="submit">Submit</button>
+	</form>
+</article>
+
+<style>
+
+	.login-form-wrapper {
+		display: flex;
+		height: 100%;
+	}
+
+	.login-form-wrapper > form {
+		margin: auto;
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+		width: 60%;
+	}
+
+	.login-form-wrapper > form > header {
+		text-align: center;
+		font-size: 1.3rem;
+		color: var(--red-wine);
+		text-align: left;
+	}
+
+</style>
+
+<script src='/public/src/login-form.js'></script>

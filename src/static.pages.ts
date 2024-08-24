@@ -13,7 +13,7 @@ router.get('/raw2', async function(req: Request, res: Response): Promise<void>
 {
 	const options: Object =
 	{
-		hostname: 'store-express-api-test',
+		hostname: 'adega-api-test',
 		port: 3001,
 		path: '/api/v1/test',
 		method: 'GET'
