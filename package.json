@@ -8,7 +8,7 @@
   "version": "1.0.0",
   "main": "src/app.ts",
   "scripts": {
-    "build": "tsc",
+    "build": "tsc --build tsconfig.app.json && tsc --build tsconfig.frontend.json",
     "start": "node dist/app.js"
   },
   "keywords": [],

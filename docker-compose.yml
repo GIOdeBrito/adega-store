@@ -8,7 +8,7 @@ services:
             context: .
             dockerfile: Dockerfile
         ports:
-            - "3000:3000"
+            - "3000:8080"
         command: npm start
         networks:
             - adega-net
@@ -21,7 +21,7 @@ services:
             context: ./services/test-service/
             dockerfile: Dockerfile
         ports:
-            - "3001:3001"
+            - "3001:8080"
         command: npm start
         networks:
             - adega-net
@@ -31,4 +31,3 @@ networks:
     adega-net:
         name: adega-network
         external: false
-
