@@ -27,6 +27,19 @@ services:
             - adega-net
         tty: true
 
+    main-backend-service:
+        image: adega-api-backend-main:latest
+        container_name: adega-backend-main
+        build:
+            context: ./services/adega-backend/
+            dockerfile: Dockerfile
+        ports:
+            - "3002:8080"
+        command: npm start
+        networks:
+            - adega-net
+        tty: true
+
 networks:
     adega-net:
         name: adega-network

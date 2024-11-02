@@ -6,14 +6,17 @@ window.addEventListener('load', () => navControls());
 
 function navControls (): void
 {
-	let profile = document.querySelector('img[id="nav-profile"]') as HTMLImageElement;
+	let profileElements = document.querySelectorAll('img[id="nav-profile"], label[for="nav-profile"]') as NodeListOf<HTMLElement>;
 
-	profile.onclick = (ev: MouseEvent) =>
+	Array.from(profileElements).map(element =>
 	{
-		ev.preventDefault();
+		element.onclick = (ev: MouseEvent) =>
+		{
+			ev.preventDefault();
 
-		new Modal('login', 'login-form');
-	};
+			new Modal('login', 'login-form');
+		};
+	});
 }
 
 

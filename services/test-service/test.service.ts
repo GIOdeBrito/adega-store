@@ -15,4 +15,4 @@ app.get("/api/v1/message", function(req: Request, res: Response)
 
 const PORT: number = 8080;
 
-app.listen(PORT, () => `Test service is listening on port ${PORT}`);
+app.listen(PORT, () => console.log(`Test service is listening on port ${PORT}`));
