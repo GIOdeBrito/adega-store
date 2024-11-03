@@ -118,6 +118,25 @@ class Modal
 
         this.root.innerHTML = content;
 
+		let scriptTags = this.root.querySelectorAll("script[src]") as NodeListOf<HTMLScriptElement>;
+
+		/* Manually adds the scripts so they are properly fetch'd */
+		Array.from(scriptTags).map(async tag =>
+		{
+			let src = tag.src;
+			let content = tag.innerText;
+			let ismodule = tag.type === "module" ? true : false;
+
+			tag.remove();
+
+			let scripttag = document.createElement('script');
+			scripttag.innerText = content;
+			scripttag.src = src;
+			scripttag.type = (ismodule === true ? "module" : "");
+
+			this.root.appendChild(scripttag);
+		});
+
 		if(!this.onload)
 		{
 			return;

@@ -10,9 +10,6 @@ async function authUser (hash: string): Promise<boolean>
 
 	let row = await queryFirst("SELECT * FROM USERS WHERE UPWD = ?", params);
 
-	console.log(row);
-
-
 	if(typeof row === "object")
 	{
 		return true;

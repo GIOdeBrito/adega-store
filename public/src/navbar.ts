@@ -1,6 +1,6 @@
 
 
-import Modal from './modal.js';
+import openLoginForm from "./login-form.js";
 
 window.addEventListener('load', () => navControls());
 
@@ -14,7 +14,7 @@ function navControls (): void
 		{
 			ev.preventDefault();
 
-			new Modal('login', 'login-form');
+			openLoginForm();
 		};
 	});
 }
