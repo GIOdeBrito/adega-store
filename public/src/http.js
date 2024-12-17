@@ -1,18 +1,23 @@
 
-
-async function httpPost (url: string, bodydata: object): Promise<string | Error>
+/**
+* Makes a POST request.
+* @param {string} url
+* @param {object} bodydata
+* @returns {string}
+*/
+async function httpPost (url, bodydata)
 {
 	let dataobject = JSON.stringify({ ...bodydata });
 
-	let xmlreq: XMLHttpRequest = new XMLHttpRequest();
+	let xmlreq = new XMLHttpRequest();
 	xmlreq.open("POST", url, true);
 	xmlreq.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
 
 	return new Promise((resolve, reject) =>
 	{
-		xmlreq.onload = (res: ProgressEvent) =>
+		xmlreq.onload = (res) =>
 		{
-			const request = res.target as XMLHttpRequest;
+			const request = res.target;
 
 			resolve(request.responseText);
 		};
@@ -23,14 +28,21 @@ async function httpPost (url: string, bodydata: object): Promise<string | Error>
 	});
 }
 
-async function httpGet (url: string): Promise<string | object>
+/**
+* Makes a GET request.
+* @param url
+* @returns {object | string}
+*/
+async function httpGet (url)
 {
 	let response = await fetch(url);
 
-	try {
+	try
+	{
 		return await response.json();
 	}
-	catch {
+	catch
+	{
 		return await response.text();
 	}
 }

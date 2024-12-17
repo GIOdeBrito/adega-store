@@ -1,10 +1,10 @@
 
 class TestApiModel
 {
-	private _title: string;
-	private _response: string;
+	#_title;
+	#_response;
 
-	constructor (title: string, response: string)
+	constructor (title, response)
 	{
 		this._title = title;
 		this._response = response;
@@ -21,4 +21,4 @@ class TestApiModel
 	}
 }
 
-export default TestApiModel;
+module.exports = TestApiModel;

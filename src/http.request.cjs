@@ -5,20 +5,21 @@
 Since I do not have a SSL certificate, I had to stick to HTTP.
 */
 
-import http from "http";
+const http = require("http");
 
-function httpGet (options: Object): Promise<string>
+function httpGet (options)
 {
 	return new Promise((resolve, reject) =>
 	{
-		let result: string[] = [];
+		let result = [];
 
-		const req: http.ClientRequest = http.request(options, (res: http.IncomingMessage) =>
+		const req = http.request(options, (res) =>
 		{
 			//console.log(res.statusCode);
 
 			res.setEncoding('utf8');
-			res.on('data', (chunk: string) =>
+
+			res.on('data', (chunk) =>
 			{
 				result.push(chunk);
 			});
@@ -29,7 +30,7 @@ function httpGet (options: Object): Promise<string>
 			});
 		});
 
-		req.on('error', (err: any) =>
+		req.on('error', (err) =>
 		{
 			reject(err.message);
 		});
@@ -38,13 +39,13 @@ function httpGet (options: Object): Promise<string>
 	});
 }
 
-function httpPost (): void
+function httpPost ()
 {
 	// No post logic for now :P
 }
 
-export {
+module.exports = {
 	httpGet,
 	httpPost
-}
+};
 

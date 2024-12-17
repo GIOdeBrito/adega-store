@@ -1,21 +1,16 @@
 {
   "dependencies": {
     "express": "^4.19.2",
-    "typescript": "^5.4.5",
 	"ejs": "^3.1.8"
   },
-  "name": "adega-store",
+  "name": "adega-wine-store",
   "version": "1.0.0",
-  "main": "src/app.ts",
+  "main": "src/app.cjs",
   "scripts": {
-    "build": "tsc --build tsconfig.app.json && tsc --build tsconfig.frontend.json",
-    "start": "node dist/app.js"
+    "start": "node src/app.cjs"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
-  "devDependencies": {
-    "@types/express": "^4.17.21"
-  }
+  "description": ""
 }

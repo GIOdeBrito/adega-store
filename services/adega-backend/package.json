@@ -1,20 +1,15 @@
 {
   "dependencies": {
-    "express": "^4.19.2",
-    "typescript": "^5.4.5"
+    "express": "^4.19.2"
   },
   "name": "adega-store-service-backend",
   "version": "1.0.0",
-  "main": "main.ts",
+  "main": "main.cjs",
   "scripts": {
-    "build": "tsc",
-    "start": "node dist/main.js"
+    "start": "node main.cjs"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
-  "devDependencies": {
-    "@types/express": "^4.17.21"
-  }
+  "description": ""
 }

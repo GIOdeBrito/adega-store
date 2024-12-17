@@ -2,8 +2,8 @@ version: '3.5'
 
 services:
     app:
-        image: main-adega-app:latest
-        container_name: adega-wine-container
+        image: main-wine-app:latest
+        container_name: adega-main-container
         build:
             context: .
             dockerfile: Dockerfile

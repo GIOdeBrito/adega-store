@@ -1,8 +1,8 @@
 
 
-import { queryFirst } from "./sql";
+const { queryFirst } = require("./sql.cjs");
 
-async function authUser (hash: string): Promise<boolean>
+async function authUser (hash)
 {
 	let params = [
 		hash
@@ -18,6 +18,4 @@ async function authUser (hash: string): Promise<boolean>
 	return false;
 }
 
-export {
-	authUser
-}
+module.exports = authUser;

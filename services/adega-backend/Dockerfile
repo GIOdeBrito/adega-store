@@ -10,6 +10,4 @@ RUN npm install sqlite3
 
 COPY . .
 
-RUN npm run build
-
 EXPOSE 3002

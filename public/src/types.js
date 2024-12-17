@@ -1,32 +1,32 @@
 
 
-class Vector2
+class Point
 {
-    #x: string;
-    #y: string;
+    #x;
+    #y;
 
-    constructor (x: string | number, y: string | number)
+    constructor (x, y)
     {
         this.#x = this.#parseValue(x);
         this.#y = this.#parseValue(y);
     }
 
-	get x (): string
+	get x ()
 	{
 		return this.#x;
 	}
 
-	get y (): string
+	get y ()
 	{
 		return this.#y;
 	}
 
-    static get zero (): Vector2
+    static get zero ()
     {
-        return new Vector2(0, 0);
+        return new Point(0, 0);
     }
 
-    #parseValue (val: string | number): string
+    #parseValue (val)
     {
 		if(typeof val !== 'number')
 		{
@@ -38,6 +38,6 @@ class Vector2
 }
 
 export {
-	Vector2
+	Point
 }
 
