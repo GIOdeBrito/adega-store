@@ -1,27 +1,15 @@
-version: '3.5'
-
 services:
     app:
         image: main-wine-app:latest
         container_name: adega-main-container
         build:
-            context: .
+            context: ./wine-store-app/
             dockerfile: Dockerfile
+        volumes:
+            - ./wine-store-app/public:/usr/src/app/public
+            - ./wine-store-app/src:/usr/src/app/src
         ports:
-            - "3000:8080"
-        command: npm start
-        networks:
-            - adega-net
-        tty: true
-
-    test-service:
-        image: adega-api-test:latest
-        container_name: adega-api-test
-        build:
-            context: ./services/test-service/
-            dockerfile: Dockerfile
-        ports:
-            - "3001:8080"
+            - "${APP_PORT}:8080"
         command: npm start
         networks:
             - adega-net
@@ -31,10 +19,13 @@ services:
         image: adega-api-backend-main:latest
         container_name: adega-backend-main
         build:
-            context: ./services/adega-backend/
+            context: ./wine-server-service/
             dockerfile: Dockerfile
+        volumes:
+            - ./wine-server-service/database:/usr/src/app/database
+            - ./wine-server-service/src:/usr/src/app/src
         ports:
-            - "3002:8080"
+            - "${SERVER_PORT}:8080"
         command: npm start
         networks:
             - adega-net

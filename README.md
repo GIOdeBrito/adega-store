@@ -8,16 +8,10 @@
 
 ## Running the Application
 
-First, fire up the build of the images.
+Build and run the container.
 
 ```bash
-sudo docker-compose build
-```
-
-After that, run the docker compose up instruction.
-
-```bash
-sudo docker-compose up -d
+sudo docker-compose up -d --build
 ```
 
 ## Logs
@@ -30,5 +24,3 @@ It is important to check the logs in case something peculiar happens.
 ```bash
 sudo docker logs wine-store
 ```
-
-
