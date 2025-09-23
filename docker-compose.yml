@@ -1,22 +1,24 @@
 services:
     app:
-        image: main-wine-app:latest
         container_name: adega-main-container
+        restart: always
         build:
             context: ./wine-store-app/
             dockerfile: Dockerfile
         volumes:
             - ./wine-store-app/public:/usr/src/app/public
             - ./wine-store-app/src:/usr/src/app/src
+        environment:
+            - env=${ENVIRONMENT}
         ports:
             - "${APP_PORT}:8080"
-        command: npm start
+        #command: npm start
+        command: npm run dev
         networks:
             - adega-net
         tty: true
 
     main-backend-service:
-        image: adega-api-backend-main:latest
         container_name: adega-backend-main
         build:
             context: ./wine-server-service/

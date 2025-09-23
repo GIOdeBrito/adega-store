@@ -1,13 +1,18 @@
 {
   "dependencies": {
-    "express": "^4.19.2",
-	"ejs": "^3.1.8"
+    "express": "4.19.2",
+	"ejs": "3.1.8",
+	"express-ejs-layouts": "2.5.1"
+  },
+  "devDependencies": {
+	"nodemon": "2.0.18"
   },
   "name": "adega-wine-store",
   "version": "1.0.0",
   "main": "src/app.cjs",
   "scripts": {
-    "start": "node src/app.cjs"
+	"start": "node src/app.cjs",
+	"dev": "nodemon src/app.cjs"
   },
   "keywords": [],
   "author": "",
