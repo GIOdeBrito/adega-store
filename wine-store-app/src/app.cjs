@@ -5,8 +5,7 @@
 @author Giordano de Brito
 @version 1.0.0
 @date 2025-09-23
-@description: The adega store bootstrap. This script is responsible for
-loading and setting up the entire application.
+@description: This script is responsible for loading and setting up the entire application.
 */
 
 const express = require("express");
@@ -21,6 +20,7 @@ app.set('views', path.join(__dirname, './views'));
 // Set static folders
 app.use('/assets', express.static(path.join(__dirname, '../public/assets')));
 app.use('/src', express.static(path.join(__dirname, '../public/src')));
+app.use('/style', express.static(path.join(__dirname, '../public/style')));
 app.use(expressLayouts);
 app.set('layout', 'layout/page');
 

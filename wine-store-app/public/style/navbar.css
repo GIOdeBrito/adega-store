@@ -12,19 +12,20 @@ nav {
 
 nav > section {
 	display: flex;
-	gap: .3rem;
+	gap: .4rem;
 }
 
-nav > section > label {
-	margin: .3rem;
+nav > section button {
+	margin: 0;
 	cursor: pointer;
 	border-style: solid;
 	border-width: 0 0 2px 0;
 	border-color: #00000000;
 	transition: border-color .5s ease;
+	background: #0000;
 }
 
-nav > section > label:hover {
+nav > section button:hover {
 	border-color: var(--red-wine);
 }
 

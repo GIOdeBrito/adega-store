@@ -1,0 +1,63 @@
+
+@import "navbar.css";
+@import "side-notification.css";
+@import "classes.css";
+@import "buttons.css";
+
+/* Dialog */
+
+.home-dialog-product {
+	border: none;
+	margin: 3rem auto;
+	background-color: #fff;
+	width: calc(100% - 18rem);
+	box-sizing: border-box;
+	display: flex;
+	padding: 0;
+	overflow: hidden;
+	animation-name: dialog-product-appear;
+	animation-duration: 1s;
+}
+
+.home-dialog-product > :nth-child(1) {
+	width: 40%;
+	background-color: var(--red-wine);
+	display: flex;
+}
+
+.home-dialog-product > :nth-child(1) > img {
+	width: 100%;
+	margin: auto;
+	padding: 1rem;
+}
+
+.home-dialog-product > :nth-child(2) {
+	width: 60%;
+	height: 100%;
+	display: flex;
+	padding: 4rem;
+	box-sizing: border-box;
+}
+
+.home-dialog-product > :nth-child(2) > div {
+	margin: auto;
+}
+
+.home-dialog-product h1 {
+	text-transform: uppercase;
+	color: var(--dark-gray-strong);
+	margin: 0;
+	font-size: 3rem;
+}
+
+.home-dialog-product h2 {
+	font-size: 1.3rem;
+	color: var(--subtitle-gray);
+	font-weight: normal;
+	text-align: left;
+}
+
+.home-dialog-product h3 {
+	font-size: .8rem;
+	font-weight: normal;
+}
