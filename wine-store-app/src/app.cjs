@@ -25,10 +25,14 @@ app.use(expressLayouts);
 app.set('layout', 'layout/page');
 
 const pagesRouter = require("./routes/page-routes.cjs");
-const testRouter = require("./routes/test-routes.cjs");
-
 app.use(pagesRouter);
-app.use(testRouter);
+
+// Use test routes on DEV
+if(process.env.environment === 'dev' || process.env.environment === 'development')
+{
+	const testRouter = require("./routes/test-routes.cjs");
+	app.use(testRouter);
+}
 
 const PORT = 8080;
 

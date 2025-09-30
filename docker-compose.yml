@@ -9,7 +9,7 @@ services:
             - ./wine-store-app/public:/usr/src/app/public
             - ./wine-store-app/src:/usr/src/app/src
         environment:
-            - env=${ENVIRONMENT}
+            - environment=${ENVIRONMENT}
         ports:
             - "${APP_PORT}:8080"
         #command: npm start
