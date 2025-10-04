@@ -6,9 +6,16 @@
 		<title><%= title %> | Adega Wine Express</title>
 		<link rel="stylesheet" href="/style/theme.css">
 		<link rel="icon" type="image/x-icon" href="/assets/cart.ico">
+		<script src="/src/core/loader.js" type="module"></script>
 	</head>
 
 	<body>
-		<%- body %>
+		<%- include('../partials/navbar') %>
+
+		<main>
+			<%- body %>
+		</main>
+
+		<%- include('../partials/foot') %>
 	</body>
 </html>

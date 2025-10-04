@@ -30,6 +30,9 @@ app.post("/api/v1/user-auth", async function (req, res)
 	res.send({ api: "v1", result: dbresponse });
 });
 
+const apiGraphQl = require('./api/graphql.cjs');
+app.use(apiGraphQl);
+
 const PORT = 8080;
 
 app.listen(PORT, () => console.log(`Backend running on port ${PORT}`));

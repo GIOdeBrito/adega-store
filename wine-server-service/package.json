@@ -1,6 +1,7 @@
 {
   "dependencies": {
-    "express": "^4.19.2"
+	"express": "^4.19.2",
+	"graphql": "16.11.0"
   },
   "name": "adega-store-service-backend",
   "version": "1.0.0",

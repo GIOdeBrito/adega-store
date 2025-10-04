@@ -12,11 +12,21 @@
 html, body {
     margin: 0;
 	background-color: var(--background-gray);
+	height: 100%;
+}
+
+body {
+	display: flex;
+	flex-direction: column;
 }
 
 * {
 	font-family: "Inter", sans-serif;
 	scrollbar-width: thin;
+}
+
+main {
+	flex: 1;
 }
 
 img {

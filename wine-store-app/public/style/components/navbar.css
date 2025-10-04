@@ -10,32 +10,32 @@ nav {
 	color: var(--dark-gray);
 }
 
-nav > section {
+img {
+	height: 15px;
+	user-select: none;
+}
+
+a, img, label {
+	cursor: pointer;
+}
+
+section {
 	display: flex;
 	gap: .4rem;
 }
 
-nav > section button {
+section a {
 	margin: 0;
-	cursor: pointer;
 	border-style: solid;
 	border-width: 0 0 2px 0;
 	border-color: #00000000;
 	transition: border-color .5s ease;
 	background: #0000;
+	text-decoration: none;
+	color: inherit;
 }
 
-nav > section button:hover {
+section a:hover {
 	border-color: var(--red-wine);
-}
-
-nav #nav-profile {
-	width: 1rem;
-	height: 1rem;
-	cursor: pointer;
-}
-
-nav section:has(> label[for="nav-profile"]) {
-	align-items: center;
 }
 
