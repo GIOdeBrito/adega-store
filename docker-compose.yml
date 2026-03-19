@@ -1,37 +1,58 @@
 services:
     app:
-        container_name: adega-main-container
+        container_name: adega-container-dev
         restart: always
         build:
             context: ./wine-store-app/
             dockerfile: Dockerfile
+        environment:
+            ENVIRONMENT: development
         volumes:
             - ./wine-store-app/public:/usr/src/app/public
             - ./wine-store-app/src:/usr/src/app/src
-        environment:
-            - environment=${ENVIRONMENT}
         ports:
             - "${APP_PORT}:8080"
-        #command: npm start
         command: npm run dev
         networks:
             - adega-net
         tty: true
+        profiles: [ "dev" ]
 
-    main-backend-service:
-        container_name: adega-backend-main
+    backend-service-dev:
+        container_name: adega-backend-dev
         build:
             context: ./wine-server-service/
             dockerfile: Dockerfile
+        environment:
+            ENVIRONMENT: development
         volumes:
             - ./wine-server-service/database:/usr/src/app/database
             - ./wine-server-service/src:/usr/src/app/src
         ports:
             - "${SERVER_PORT}:8080"
+        depends_on:
+            - database-dev
         command: npm start
         networks:
             - adega-net
         tty: true
+        profiles: [ "dev" ]
+
+    database-dev:
+        container_name: postgres-db-container-dev
+        build:
+            context: ./postgres-db/
+            dockerfile: Dockerfile
+        environment:
+            POSTGRES_USER: ${DATABASE_LOGIN}
+            POSTGRES_PASSWORD: ${DATABASE_PASSWD}
+            POSTGRES_DB: ${DATABASE_NAME}
+        ports:
+            - "${DATABASE_PORT}:5432"
+        networks:
+            - adega-net
+        tty: true
+        profiles: [ "dev" ]
 
 networks:
     adega-net:
