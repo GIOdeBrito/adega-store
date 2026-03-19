@@ -1,11 +1,16 @@
 {
   "dependencies": {
-	"express": "^4.19.2"
+	"express": "^4.19.2",
+	"pg": "^8.13.0"
+  },
+  "devDependencies": {
+	"nodemon": "2.0.18"
   },
   "name": "adega-store-service-backend",
   "version": "1.0.0",
   "main": "main.cjs",
   "scripts": {
+	"dev": "nodemon src/main.cjs",
 	"start": "node src/main.cjs"
   },
   "keywords": [],

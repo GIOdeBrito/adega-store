@@ -2,8 +2,6 @@
 const express = require("express");
 const app = express();
 
-const authUser = require("./helpers/auth.cjs");
-
 app.use(express.json());
 
 app.use(function (req, res, next)
@@ -19,15 +17,6 @@ app.use(function (req, res, next)
 app.get("/api/v1/version", function (req, res)
 {
 	res.send({ api: "v1", version: "1.0.0" });
-});
-
-app.post("/api/v1/user-auth", async function (req, res)
-{
-	let body = req.body;
-
-	let dbresponse = await authUser(body.pwd);
-
-	res.send({ api: "v1", result: dbresponse });
 });
 
 const PORT = 8080;

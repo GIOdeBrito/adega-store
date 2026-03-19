@@ -20,6 +20,7 @@ services:
 
     backend-service-dev:
         container_name: adega-backend-dev
+        restart: always
         build:
             context: ./wine-server-service/
             dockerfile: Dockerfile
@@ -32,7 +33,7 @@ services:
             - "${SERVER_PORT}:8080"
         depends_on:
             - database-dev
-        command: npm start
+        command: npm run dev
         networks:
             - adega-net
         tty: true

@@ -1,12 +1,9 @@
 
 /**
-@fileoverview Main application entrypoint.
-
-@author Giordano de Brito
-@version 1.0.0
-@date 2025-09-23
-@description: This script is responsible for loading and setting up the entire application.
-*/
+ * @fileoverview Main application entrypoint.
+ *
+ * @author Giordano de Brito
+ */
 
 const express = require("express");
 const expressLayouts = require("express-ejs-layouts");
