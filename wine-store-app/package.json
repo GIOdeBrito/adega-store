@@ -7,15 +7,8 @@
   "devDependencies": {
 	"nodemon": "2.0.18"
   },
-  "name": "adega-wine-store",
-  "version": "1.0.0",
-  "main": "src/app.cjs",
   "scripts": {
 	"start": "node src/app.cjs",
 	"dev": "nodemon src/app.cjs"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": ""
+  }
 }

@@ -26,6 +26,9 @@ services:
             dockerfile: Dockerfile
         environment:
             ENVIRONMENT: development
+            POSTGRES_DB_NAME: ${DATABASE_NAME}
+            POSTGRES_DB_LOGIN: ${DATABASE_LOGIN}
+            POSTGRES_DB_PASSWD: ${DATABASE_PASSWD}
         volumes:
             - ./wine-server-service/database:/usr/src/app/database
             - ./wine-server-service/src:/usr/src/app/src
