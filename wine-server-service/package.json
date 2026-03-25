@@ -7,7 +7,7 @@
 	"nodemon": "2.0.18"
   },
   "scripts": {
-	"dev": "nodemon src/main.cjs",
-	"start": "node src/main.cjs"
+	"dev": "nodemon src/server.cjs",
+	"start": "node src/server.cjs"
   }
 }

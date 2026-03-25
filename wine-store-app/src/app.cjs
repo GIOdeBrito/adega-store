@@ -25,7 +25,7 @@ const pagesRouter = require("./routes/page-routes.cjs");
 app.use(pagesRouter);
 
 // Use test routes on DEV
-if(process.env.environment === 'dev' || process.env.environment === 'development')
+if(process.env.ENVIRONMENT === 'development')
 {
 	const testRouter = require("./routes/test-routes.cjs");
 	app.use(testRouter);

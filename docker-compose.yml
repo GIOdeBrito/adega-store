@@ -30,7 +30,6 @@ services:
             POSTGRES_DB_LOGIN: ${DATABASE_LOGIN}
             POSTGRES_DB_PASSWD: ${DATABASE_PASSWD}
         volumes:
-            - ./wine-server-service/database:/usr/src/app/database
             - ./wine-server-service/src:/usr/src/app/src
         ports:
             - "${SERVER_PORT}:8080"

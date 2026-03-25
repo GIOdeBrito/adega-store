@@ -26,7 +26,8 @@ class PostgresDB
 		try {
 			const res = await client.query(text, params);
 			return res;
-		} finally {
+		}
+		finally {
 			client.release();
 		}
 	}
@@ -57,13 +58,16 @@ class PostgresDB
 			const res = await client.query(text, params);
 			await this.commit(client);
 			return res;
-		} catch (err) {
+		}
+		catch (err) {
 			await this.rollback(client);
 			throw err;
 		}
 	}
 
-	async dispose() {
+	async dispose()
+	{
+		console.log("Disposing database connection");
 		await this.pool.end();
 	}
 }
