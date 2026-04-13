@@ -3,13 +3,13 @@ services:
         container_name: adega-container-dev
         restart: always
         build:
-            context: ./wine-store-app/
+            context: ./app
             dockerfile: Dockerfile
         environment:
             ENVIRONMENT: development
         volumes:
-            - ./wine-store-app/public:/usr/src/app/public
-            - ./wine-store-app/src:/usr/src/app/src
+            - ./app/public:/usr/src/app/public
+            - ./app/src:/usr/src/app/src
         ports:
             - "${APP_PORT}:8080"
         command: npm run dev
@@ -22,7 +22,7 @@ services:
         container_name: adega-backend-dev
         restart: always
         build:
-            context: ./wine-server-service/
+            context: ./backend
             dockerfile: Dockerfile
         environment:
             ENVIRONMENT: development
@@ -30,7 +30,7 @@ services:
             POSTGRES_DB_LOGIN: ${DATABASE_LOGIN}
             POSTGRES_DB_PASSWD: ${DATABASE_PASSWD}
         volumes:
-            - ./wine-server-service/src:/usr/src/app/src
+            - ./backend/src:/usr/src/app/src
         ports:
             - "${SERVER_PORT}:8080"
         depends_on:
@@ -41,10 +41,22 @@ services:
         tty: true
         profiles: [ "dev" ]
 
+    webpack-bundler-dev:
+        container_name: webpack-bundler-dev
+        build:
+            context: ./webpack-bundler
+            dockerfile: Dockerfile
+        volumes:
+            - ./app/private/sourcejs:/app/sourcejs
+            - ./app/public/src:/app/outdir
+        working_dir: /app
+        command: npm run dev
+        profiles: [ "dev" ]
+
     database-dev:
         container_name: postgres-db-container-dev
         build:
-            context: ./postgres-db/
+            context: ./postgres-db
             dockerfile: Dockerfile
         environment:
             POSTGRES_USER: ${DATABASE_LOGIN}
