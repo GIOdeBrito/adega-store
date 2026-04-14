@@ -1,50 +1,39 @@
 
 /**
-* Makes a POST request.
-* @param {string} url
-* @param {object} bodydata
-* @returns {string}
-*/
-async function httpPost (url, bodydata)
-{
-	let dataobject = JSON.stringify({ ...bodydata });
+ * Makes a POST request.
+ * @param {string} url
+ * @param {object} bodydata
+ * @param {object} [options] - Additional fetch options
+ * @returns {string}
+ */
+ async function httpPost(url, data, options = {})
+ {
+	 const json = JSON.stringify({ ...data });
 
-	let xmlreq = new XMLHttpRequest();
-	xmlreq.open("POST", url, true);
-	xmlreq.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
+	 const response = await fetch(url, {
+		 method: "POST",
+		 headers: { "Content-Type": "application/json; charset=UTF-8" },
+		 body: json,
+		 ...options
+	 });
 
-	return new Promise((resolve, reject) =>
-	{
-		xmlreq.onload = (res) =>
-		{
-			const request = res.target;
-
-			resolve(request.responseText);
-		};
-
-		xmlreq.onerror = () => reject(new Error("POST failed"));
-
-		xmlreq.send(dataobject);
-	});
-}
+	 return await response.text();
+ }
 
 /**
-* Makes a GET request.
-* @param url
-* @returns {object | string}
-*/
-async function httpGet (url)
+ * Makes a GET request.
+ * @param {string} url
+ * @param {object} [options] - Fetch options (headers, etc.)
+ * @returns {object | string}
+ */
+async function httpGet (url, options = {})
 {
-	let response = await fetch(url);
-
-	try
-	{
-		return await response.json();
-	}
-	catch
-	{
-		return await response.text();
-	}
+    let response = await fetch(url, options);
+    try {
+        return await response.json();
+    } catch {
+        return await response.text();
+    }
 }
 
 export {

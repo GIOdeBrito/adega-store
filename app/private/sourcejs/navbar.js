@@ -1,22 +1,32 @@
 
+import ModalFactory from "./factories/modal-factory.js";
+import AnimationFactory from "./factories/animation-factory.js";
 
-import openLoginForm from "./login-form.js";
-
-window.addEventListener('load', () => navControls());
-
-function navControls ()
+function setLoginControls (button)
 {
-	let profileElements = document.querySelectorAll('img[id="nav-profile"], label[for="nav-profile"]')
+	button.addEventListener('pointerdown', () => {
 
-	Array.from(profileElements).forEach(element =>
-	{
-		element.onclick = (ev) =>
-		{
-			ev.preventDefault();
+		ModalFactory.new('login', 'login-form-modal');
 
-			openLoginForm();
-		};
+		const article = document.querySelector('dialog[data-modal-name="login"]');
+
+		AnimationFactory.new(article)
+			.rule("0%", "transform: translateY(30%); opacity: 0")
+			.rule("100%", "transform: translateY(0%); opacity: 1")
+			.duration(.65)
+			.smooth()
+			.play();
 	});
 }
 
+export default new class {
 
+	setControls ()
+	{
+		const navbar = document.querySelector('[data-label="navbar"]');
+
+		const blogin = navbar.querySelector('a[data-label="b-login-form"]');
+		setLoginControls(blogin);
+	}
+
+}();

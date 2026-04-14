@@ -1,7 +1,7 @@
 
-@import "side-notification.css";
 @import "classes.css";
 @import "buttons.css";
+@import "form.css";
 
 /* Dialog */
 
@@ -59,4 +59,15 @@
 .home-dialog-product h3 {
 	font-size: .8rem;
 	font-weight: normal;
+}
+
+@keyframes dialog-product-appear {
+	from {
+		opacity: 0;
+		transform: translateY(10%);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0%);
+	}
 }

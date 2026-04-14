@@ -1,0 +1,14 @@
+
+.form-login {
+	display: flex;
+	flex-direction: column;
+	padding: 1rem;
+}
+
+.input-login-text {
+	padding: .75rem;
+	border-style: solid;
+	border-width: 0 0 1px 0;
+	border-color: #00000082;
+	outline: none;
+}
