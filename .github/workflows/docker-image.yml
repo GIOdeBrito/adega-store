@@ -1,0 +1,36 @@
+name: Docker Build Images
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    env:
+      APP_PORT: 3000
+      SERVER_PORT: 3100
+      DATABASE_PORT: 3200
+      DATABASE_LOGIN: login
+      DATABASE_PASSWD: 123
+      DATABASE_NAME: dbname
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build with docker compose
+        run: |
+          echo "Begin images build"
+          docker compose --profile release build
+
+      - name: Run with docker compose
+        run: |
+          echo "Running containers on Release mode"
+          docker compose --profile release up -d
+          sleep 10
+          docker compose --profile release down
+          echo "done"
+

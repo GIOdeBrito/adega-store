@@ -1,8 +1,8 @@
 
 const { httpGet } = require('../helpers/http.cjs');
 
-class TestController
-{
+module.exports = class {
+
 	static messageSender (req, res)
 	{
 		res.send("This is from a controller!");
@@ -10,25 +10,15 @@ class TestController
 
 	static async backendVersion (req, res)
 	{
-		const options =
-		{
-			hostname: 'adega-backend-main',
+		const response = await httpGet({
+			hostname: process.env.ENVIRONMENT === "development" ? 'backend-service-dev' : 'backend-service',
 			port: 8080,
-			path: '/api/v1/version',
+			path: '/api/v1/test/version',
 			method: 'GET'
-		};
+		});
 
-		try
-		{
-			let respRaw = await httpGet(options);
-			res.send(respRaw);
-		}
-		catch(ex)
-		{
-			res.send(ex.Message);
-			console.log(ex);
-		}
+		res.set('Content-Type', 'application/json');
+		res.send(response);
 	}
-}
 
-module.exports = TestController;
+};

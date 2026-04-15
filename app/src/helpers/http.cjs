@@ -1,37 +1,28 @@
 
-/*
-@Author: Giordano de Brito
-@Description: Here lies some basic Web request functions.
-Since I do not have a SSL certificate, I had to stick to HTTP.
-*/
-
 const http = require("http");
 
-function httpGet (options)
+function httpGet(options)
 {
-	return new Promise((resolve, reject) =>
-	{
-		let result = [];
+	return new Promise((resolve, reject) => {
 
-		const req = http.request(options, (res) =>
-		{
-			//console.log(res.statusCode);
+		const req = http.request(options, (res) => {
+
+			let result = '';
 
 			res.setEncoding('utf8');
 
-			res.on('data', (chunk) =>
-			{
-				result.push(chunk);
-			});
+			res.on('data', (chunk) => {
 
-			res.on('end', () =>
-			{
-				resolve(result.join(''));
+				result += chunk;
+			});
+			res.on('end', () => {
+
+				resolve(result);
 			});
 		});
 
-		req.on('error', (err) =>
-		{
+		req.on('error', (err) => {
+
 			reject(err.message);
 		});
 
@@ -39,13 +30,37 @@ function httpGet (options)
 	});
 }
 
-function httpPost ()
+function httpPostJson(options, data)
 {
-	// No post logic for now :P
+	const body = JSON.stringify(data);
+
+	const postOptions = {
+		...options,
+		method: 'POST',
+		headers: {
+			...options.headers,
+			'Content-Type': 'application/json'
+		}
+	};
+
+	return new Promise((resolve, reject) => {
+
+		const req = http.request(postOptions, (res) => {
+
+			let result = '';
+			res.setEncoding('utf8');
+			res.on('data', chunk => result += chunk);
+			res.on('end', () => resolve(result));
+		});
+
+		req.on('error', err => reject(err.message));
+		req.write(body);
+		req.end();
+	});
 }
 
 module.exports = {
 	httpGet,
-	httpPost
+	httpPostJson
 };
 

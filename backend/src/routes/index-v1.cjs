@@ -1,17 +1,17 @@
 
 const express = require("express");
 const router = express.Router();
-const container = require('../services/container.cjs');
+const TestController = require("../controllers/test.controller.cjs");
 
-router.get("/db", async (req, res) => {
+if(process.env.ENVIRONMENT === "development")
+{
+	router.get("/test/db", TestController.databaseQuery);
+	router.get("/test/version", TestController.version);
+}
 
-	const rows = await container.get('postgresdb').query("SELECT * FROM users");
-	res.send(rows.rows);
-});
+router.get("/hello", (req, res) => {
 
-router.get("/version", (req, res) => {
-
-	res.send({ api: "v1", version: "1.0.0" });
+	res.send("hello");
 });
 
 module.exports = router;

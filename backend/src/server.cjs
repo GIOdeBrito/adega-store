@@ -13,8 +13,11 @@ app.use((req, res, next) => {
 
 app.use(express.json());
 
-const v1Routes = require('./routes/index-v1.cjs');
-app.use('/api/v1', v1Routes);
+const v1routes = require('./routes/index-v1.cjs');
+app.use('/api/v1', v1routes);
+
+const userroutes = require('./routes/user.routes.cjs');
+app.use('/api/v1/user', v1routes);
 
 process.on('SIGTERM', async () => {
 
@@ -31,3 +34,4 @@ process.on('SIGINT', async () => {
 const PORT = 8080;
 
 app.listen(PORT, () => console.log(`Backend running on port ${PORT}`));
+

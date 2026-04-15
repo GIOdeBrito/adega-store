@@ -1,6 +1,6 @@
 
-class HomeController
-{
+module.exports = class {
+
 	static index (req, res)
 	{
 		const viewData = {
@@ -9,6 +9,5 @@ class HomeController
 
 		res.render('index', viewData);
 	}
-}
 
-module.exports = HomeController;
+};

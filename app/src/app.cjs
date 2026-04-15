@@ -24,6 +24,9 @@ app.set('layout', 'layout/page');
 const pagesRouter = require("./routes/page-routes.cjs");
 app.use(pagesRouter);
 
+const apiRouter = require("./routes/api.routes.cjs");
+app.use(apiRouter);
+
 // Use test routes on DEV
 if(process.env.ENVIRONMENT === 'development')
 {

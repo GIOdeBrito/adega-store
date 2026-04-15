@@ -1,5 +1,5 @@
 services:
-    app:
+    app-dev:
         container_name: adega-container-dev
         restart: always
         build:
@@ -18,6 +18,22 @@ services:
         tty: true
         profiles: [ "dev" ]
 
+    app-release:
+        container_name: adega-container-release
+        restart: always
+        build:
+            context: ./app
+            dockerfile: Dockerfile.release
+        environment:
+            ENVIRONMENT: release
+        ports:
+            - "${APP_PORT}:8080"
+        command: npm run start
+        networks:
+            - adega-net
+        tty: true
+        profiles: [ "release" ]
+
     backend-service-dev:
         container_name: adega-backend-dev
         restart: always
@@ -34,13 +50,14 @@ services:
         ports:
             - "${SERVER_PORT}:8080"
         depends_on:
-            - database-dev
+            - database
         command: npm run dev
         networks:
             - adega-net
         tty: true
         profiles: [ "dev" ]
 
+    # JavaScript frontend code bundler
     webpack-bundler-dev:
         container_name: webpack-bundler-dev
         build:
@@ -53,7 +70,19 @@ services:
         command: npm run dev
         profiles: [ "dev" ]
 
-    database-dev:
+    webpack-bundler-release:
+        container_name: webpack-bundler-release
+        build:
+            context: ./webpack-bundler
+            dockerfile: Dockerfile
+        volumes:
+            - ./app/private/sourcejs:/app/sourcejs
+            - ./app/public/src:/app/outdir
+        working_dir: /app
+        command: npm run build
+        profiles: [ "release" ]
+
+    database:
         container_name: postgres-db-container-dev
         build:
             context: ./postgres-db
@@ -67,7 +96,7 @@ services:
         networks:
             - adega-net
         tty: true
-        profiles: [ "dev" ]
+        profiles: [ "dev", "release" ]
 
 networks:
     adega-net:
