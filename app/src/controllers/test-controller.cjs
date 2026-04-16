@@ -11,7 +11,7 @@ module.exports = class {
 	static async backendVersion (req, res)
 	{
 		const response = await httpGet({
-			hostname: process.env.ENVIRONMENT === "development" ? 'backend-service-dev' : 'backend-service',
+			hostname: process.env.ENVIRONMENT === "development" ? 'backend-service-dev' : 'backend-service-release',
 			port: 8080,
 			path: '/api/v1/test/version',
 			method: 'GET'

@@ -57,6 +57,27 @@ services:
         tty: true
         profiles: [ "dev" ]
 
+    backend-service-release:
+        container_name: adega-backend-release
+        restart: always
+        build:
+            context: ./backend
+            dockerfile: Dockerfile.release
+        environment:
+            ENVIRONMENT: release
+            POSTGRES_DB_NAME: ${DATABASE_NAME}
+            POSTGRES_DB_LOGIN: ${DATABASE_LOGIN}
+            POSTGRES_DB_PASSWD: ${DATABASE_PASSWD}
+        ports:
+            - "${SERVER_PORT}:8080"
+        depends_on:
+            - database
+        command: npm run start
+        networks:
+            - adega-net
+        tty: true
+        profiles: [ "release" ]
+
     # JavaScript frontend code bundler
     webpack-bundler-dev:
         container_name: webpack-bundler-dev

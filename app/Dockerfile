@@ -6,4 +6,4 @@ COPY package*.json .
 
 RUN npm install
 
-EXPOSE ${APP_PORT}
+EXPOSE 8080
