@@ -3,11 +3,22 @@ module.exports = class {
 
 	static index (req, res)
 	{
-		const viewData = {
+		res.render('index', {
 			title: "Home"
-		};
-
-		res.render('index', viewData);
+		});
 	}
 
+	static about (req, res)
+	{
+		res.render('about', {
+			title: "About"
+		});
+	}
+
+	static store (req, res)
+	{
+		res.render('store', {
+			title: "Store"
+		});
+	}
 };

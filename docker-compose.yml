@@ -78,7 +78,7 @@ services:
         tty: true
         profiles: [ "release" ]
 
-    # JavaScript frontend code bundler
+    # JavaScript frontend development code bundler
     webpack-bundler-dev:
         container_name: webpack-bundler-dev
         build:
@@ -87,10 +87,12 @@ services:
         volumes:
             - ./app/private/sourcejs:/app/sourcejs
             - ./app/public/src:/app/outdir
+            - ./webpack-bundler/webpack.config.js:/app/webpack.config.js
         working_dir: /app
         command: npm run dev
         profiles: [ "dev" ]
 
+    # Builds frontend distribution bundled code
     webpack-bundler-release:
         container_name: webpack-bundler-release
         build:

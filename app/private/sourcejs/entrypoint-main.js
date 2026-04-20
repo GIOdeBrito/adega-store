@@ -3,7 +3,7 @@ import Navbar from "./navbar.js";
 
 window.addEventListener('load', () => {
 
-	Navbar.setControls();
+	Navbar.initialize();
 	setControls();
 });
 

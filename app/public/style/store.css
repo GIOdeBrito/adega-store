@@ -1,0 +1,40 @@
+
+@import "classes.css";
+@import "buttons.css";
+@import "form.css";
+
+.store-item-card {
+	background-color: #eee;
+	padding: 1rem;
+	color: #000;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	box-sizing: border-box;
+	box-shadow: 0 0 1rem #0000004f;
+	transition: transform 200ms ease;
+}
+
+.store-item-card:hover {
+	/*transform: translateY(-2%);*/
+}
+
+.store-item-card > img {
+	user-select: none;
+	pointer-events: none;
+}
+
+.store-item-card > img {
+	height: 200px;
+}
+
+.store-item-card > p {
+	font-weight: bold;
+}
+
+.item-card-area {
+	display: flex;
+	gap: 1rem;
+	flex-wrap: wrap;
+	justify-content: center;
+}

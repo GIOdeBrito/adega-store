@@ -1,17 +1,8 @@
 
-/* Buttons */
-
-.button-round-wine {
-	padding: .65rem 1.2rem;
-	border-radius: 6rem;
-	background-color: var(--red-wine);
-	color: #fff;
-	font-weight: bold;
-	transition: background-color .12s linear;
+.padding-1 {
+	padding: 1rem;
 }
 
-.button-round-wine:hover {
-	background-color: #4D1F24;
-}
+
 
 

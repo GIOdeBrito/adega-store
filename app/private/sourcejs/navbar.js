@@ -2,6 +2,30 @@
 import ModalFactory from "./factories/modal-factory.js";
 import AnimationFactory from "./factories/animation-factory.js";
 
+var NAVBAR_ELEMENT = null;
+
+function elementLookup ()
+{
+	NAVBAR_ELEMENT = document.querySelector('[data-label="navbar"]');
+}
+
+function setControls ()
+{
+	const navbar = NAVBAR_ELEMENT;
+
+	const blogin = navbar.querySelector('a[data-label="b-login-form"]');
+	setLoginControls(blogin);
+}
+
+// Marks the selected page option on the navigation bar
+function markSelected ()
+{
+	const path = window.location.pathname;
+
+	const selected = NAVBAR_ELEMENT.querySelector(`a[href="${path}"]`);
+	selected.classList.add('navbar-option-underline-current');
+}
+
 function setLoginControls (button)
 {
 	button.addEventListener('pointerdown', () => {
@@ -21,12 +45,11 @@ function setLoginControls (button)
 
 export default new class {
 
-	setControls ()
+	initialize ()
 	{
-		const navbar = document.querySelector('[data-label="navbar"]');
-
-		const blogin = navbar.querySelector('a[data-label="b-login-form"]');
-		setLoginControls(blogin);
+		elementLookup();
+		setControls();
+		markSelected();
 	}
 
 }();

@@ -12,3 +12,23 @@
 	border-color: #00000082;
 	outline: none;
 }
+
+.form-input {
+	width: 100%;
+	box-sizing: border-box;
+	padding: .3rem .3rem;
+	outline: none;
+	border-style: solid;
+	border-color: #0000;
+	border-width: 2px;
+	transition: border-color 500ms ease;
+}
+
+.form-input:focus {
+	border-color: #0000002e;
+}
+
+.form-input-search-bg {
+	padding: 1rem;
+	border-radius: 7px;
+}

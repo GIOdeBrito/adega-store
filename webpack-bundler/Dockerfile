@@ -10,6 +10,7 @@ COPY package*.json ./
 RUN npm install
 
 # Copy the rest of the files (webpack configuration)
-COPY webpack.config.js .
+# Use a volume instead
+#COPY webpack.config.js .
 
 CMD ["npm", "run", "dev"]

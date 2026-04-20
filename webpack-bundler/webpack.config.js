@@ -5,7 +5,8 @@ const JavaScriptObfuscator = require('webpack-obfuscator');
 
 module.exports = (env, argv) => ({
     entry: {
-		main: './sourcejs/entrypoint-main.js'
+		main: './sourcejs/entrypoint-main.js',
+		store: './sourcejs/entrypoint-store.js'
     },
     output: {
         filename: '[name].bundle.js',

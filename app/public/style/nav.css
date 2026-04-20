@@ -34,3 +34,6 @@ nav > div a:hover {
 	border-color: var(--red-wine);
 }
 
+.navbar-option-underline-current {
+	text-decoration: underline;
+}

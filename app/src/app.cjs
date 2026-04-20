@@ -1,10 +1,4 @@
 
-/**
- * @fileoverview Main application entrypoint.
- *
- * @author Giordano de Brito
- */
-
 const express = require("express");
 const expressLayouts = require("express-ejs-layouts");
 const path = require("path");
@@ -19,7 +13,7 @@ app.use('/assets', express.static(path.join(__dirname, '../public/assets')));
 app.use('/src', express.static(path.join(__dirname, '../public/src')));
 app.use('/style', express.static(path.join(__dirname, '../public/style')));
 app.use(expressLayouts);
-app.set('layout', 'layout/page');
+app.set('layout', 'layout/document');
 
 const pagesRouter = require("./routes/page-routes.cjs");
 app.use(pagesRouter);

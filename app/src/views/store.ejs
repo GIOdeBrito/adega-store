@@ -1,0 +1,19 @@
+
+<main>
+	<article class="padding-1">
+		<search>
+			<input data-name="search-item" class="form-input form-input-search-bg" type="search" placeholder="Search">
+		</search>
+	</article>
+
+	<article class="padding-1">
+		<div data-name="cards-area" class="item-card-area"></div>
+	</article>
+</main>
+
+<%- include('./templates/store-item-card') %>
+<%- include('./partials/login-form') %>
+
+<script src="/src/store.bundle.js" type="module"></script>
+<link rel="stylesheet" href="/style/store.css">
+<link rel="stylesheet" href="/style/nav.css">
